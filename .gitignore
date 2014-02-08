@@ -1,0 +1,93 @@
+
+# OS junk files
+# --------------
+*.DS_Store
+[Tt]humbs.db
+Desktop.ini
+$RECYLCLE_BIN/
+
+
+# User-specific
+# --------------
+*.user
+*.suo
+*.userprefs
+*.usertasks
+
+
+# Build output
+# -------------
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+[Bb]in
+[Oo]bj
+
+
+# MonoDevelop / Visual Studio
+# ----------------------------
+*.[Oo]bj
+*.pdb
+*.aps
+*.builds
+*.cachefile
+*.pch
+*.psess
+*.pidb
+*.pgc
+*.pgd
+*.vsp
+*.vspscc
+*.vspx
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.tlb
+*.tlh
+*.tli
+*.bak
+*.[Cc]ache
+*.ilk
+*.meta
+*.log
+*.lib
+*.rsp
+*.sbr
+*.scc
+*.sdf
+*.tmp
+*.tmp_proj
+*.opensdf
+*.resources
+*.res
+ipch/
+*.gpState
+
+
+# Visual Studio upgrade files
+# ----------------------------
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.xml
+UpgradeLog*.htm
+
+
+# Tooling
+# ----------------
+_ReSharper*/
+*.[Rr]e[Ss]harper
+[Tt]est[Rr]esult*/
+*.dot[Cc]over
+*.[Nn][Cc]runch*
+.*[Cc]runch*.local.xml
+[Ss]tyle[Cc]op.*
+*~
+*.swp
+
+
+# Temporary Files
+# ----------------
+~.*
+~$*

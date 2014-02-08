@@ -1,0 +1,125 @@
+# ---------------------------------------------------------
+# Default behaviour at top-level, in case users don't
+# have core.autocrlf set to 'true'
+# ---------------------------------------------------------
+
+# Auto detect text files and perform CRLF/LF normalisation
+# ---------------------------------------------------------
+
+* text=auto
+
+
+
+# --------------------------------
+# Explicit rules for common cases
+# --------------------------------
+
+*.txt text
+
+
+# C Sharp + Mono / .Net
+# ----------------------
+
+*.cs text diff=csharp
+*.config text
+*.xdt text
+
+*.cshtml text
+*.asax text
+*.xaml text
+*.master text
+*.tt text
+*.vb text
+*.transform text
+*.aspx text
+*.asmx text
+*.ascx text
+
+
+
+# Mono / .Net binaries
+# ---------------------
+*.exe binary
+*.dll binary
+*.pdb binary
+
+
+# Javascript / JSON
+#-------------------
+*.js text
+*.json text
+*.coffee text
+
+
+# Web
+#---------------------
+*.html text diff=html
+*.htm text diff=html
+
+
+# CSS
+#-----------
+*.css text
+*.less text
+
+
+# Markdown
+#---------------
+*.md text
+*.markdown text
+
+
+# XML
+#-----------
+*.xml text
+*.xsd text
+*.xslt text
+
+
+# Command / shell scripts
+#-------------------------
+*.sh text
+*.cmd text
+*.bat text
+*.ps1 text
+
+
+# SQL
+#----------
+*.sql text
+
+
+# Images
+#-------------
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+
+
+# NuGet
+#--------------
+*.nuspec text
+*.nupkg binary
+
+
+# MonoDevelop / Visual Studio
+#----------------------------------
+*.sln    text merge=union eol=crlf
+*.csproj text merge=union
+*.fsproj text merge=union
+*.vbproj text merge=union
+
+
+# Standard to msysgit
+#-----------------------
+*.doc diff=astextplain
+*.DOC diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
+*.dot diff=astextplain
+*.DOT diff=astextplain
+*.pdf diff=astextplain
+*.PDF diff=astextplain
+*.rtf diff=astextplain
+*.RTF diff=astextplain
