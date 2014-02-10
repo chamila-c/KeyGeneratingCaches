@@ -3,11 +3,20 @@ using KeyGeneratingCaches.Api;
 
 namespace Implementations
 {
-    public class NotImplementedKeyGeneratingCache : IKeyGeneratingCache
+    /// <summary>
+    /// An implementation of IKeyGeneratingCache with full compliance to the API, but no actual underlying caching.
+    /// Suitable for use as a default when no other implementation is provided.
+    /// </summary>
+    public class DefaultKeyGeneratingCache : IKeyGeneratingCache
     {
-        public NotImplementedKeyGeneratingCache ()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Implementations.DefaultKeyGeneratingCache"/> class.
+        /// </summary>
+        public DefaultKeyGeneratingCache ()
         {
         }
+
+
 
         public string Add<T>(T data)
         {

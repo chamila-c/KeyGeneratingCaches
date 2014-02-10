@@ -39,7 +39,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Api\CacheEntry.cs" />
     <Compile Include="Api\IKeyGeneratingCache.cs" />
-    <Compile Include="Implementations\NotImplementedKeyGeneratingCache.cs" />
+    <Compile Include="Implementations\DefaultKeyGeneratingCache.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
