@@ -1,0 +1,8 @@
+language: c
+ 
+install:
+  - sudo apt-get install mono-devel mono-gmcs nunit-console
+ 
+script:
+  - xbuild KeyGeneratingCaches.sln /property:Configuration=Release; /verbosity:detailed
+  - nunit-console ./KeyGeneratingCaches.UnitTests/bin/Release/KeyGeneratingCaches.UnitTests.dll -exclude Excluded

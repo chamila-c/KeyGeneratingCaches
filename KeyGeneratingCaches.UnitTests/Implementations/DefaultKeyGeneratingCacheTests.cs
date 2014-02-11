@@ -10,6 +10,19 @@ namespace KeyGeneratingCaches.UnitTests.Implementations
     {
         private readonly ApiTester _apiTester = new ApiTester(new DefaultKeyGeneratingCache());
 
+
+
+        [Test()]
+        [Category("Excluded")]
+        /// <summary>
+        /// A lazy test of the Api, that runs all the tests in one go.
+        /// Good for quick verification, but lacks any detail if particular tests fail
+        /// </summary>
+        public void PassesAllApiTest()
+        {
+            Assert.IsTrue (_apiTester.PassesAllApiTests ());
+        }
+
         [Test()]
         public void ApiTestAValidCacheKeyIsReturnedOnAdd()
         {
@@ -50,6 +63,18 @@ namespace KeyGeneratingCaches.UnitTests.Implementations
         public void ApiTestTheExpectedDataIsReturnedFromGetForANonExistentKey()
         {
             Assert.IsTrue(_apiTester.TheExpectedDataIsReturnedFromGetForANonExistentKey());
+        }
+
+        [Test()]
+        public void ApiTestNullKeySuppliedToGetDoesNotResultInExceptions()
+        {
+            Assert.IsTrue (_apiTester.NullKeySuppliedToGetDoesNotResultInExceptions ());
+        }
+
+        [Test()]
+        public void ApiTestEmptyKeySuppliedToGetDoesNotResultInExceptions()
+        {
+            Assert.IsTrue (_apiTester.EmptyKeySuppliedToGetDoesNotResultInExceptions ());
         }
     }
 }

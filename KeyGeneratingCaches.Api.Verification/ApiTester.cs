@@ -29,7 +29,9 @@ namespace KeyGeneratingCaches.Api.Verification
             && AValidCacheKeyIsReturnedFromGetForAGenuineKey ()
             && ANewCacheKeyIsReturnedForACacheMiss ()
             && RemoveDoesNotThrowAnyExceptions ()
-            && TheExpectedDataIsReturnedFromGetForANonExistentKey ();
+            && TheExpectedDataIsReturnedFromGetForANonExistentKey ()
+            && NullKeySuppliedToGetDoesNotResultInExceptions ()
+            && EmptyKeySuppliedToGetDoesNotResultInExceptions ();
         }
 
         public bool AValidCacheKeyIsReturnedOnAdd()
@@ -119,6 +121,43 @@ namespace KeyGeneratingCaches.Api.Verification
             var getResult = _testSubject.Get (nonExistentKey, cacheMissHandler);
             return getResult.Data.Equals(expectedData);
         }
+
+        public bool NullKeySuppliedToGetDoesNotResultInExceptions()
+        {
+            string nullKey = null;
+            Func<FileStyleUriParser> cacheMissHandler = () =>
+            {
+                return new FileStyleUriParser ();
+            };
+
+            try
+            {
+                _testSubject.Get (nullKey, cacheMissHandler);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool EmptyKeySuppliedToGetDoesNotResultInExceptions()
+        {
+            var emptyKey = String.Empty;
+            Func<FileStyleUriParser> cacheMissHandler = () =>
+            {
+                return new FileStyleUriParser ();
+            };
+
+            try
+            {
+                _testSubject.Get (emptyKey, cacheMissHandler);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
-
