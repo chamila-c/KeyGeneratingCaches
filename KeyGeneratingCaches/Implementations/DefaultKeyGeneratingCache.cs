@@ -1,7 +1,7 @@
 using System;
 using KeyGeneratingCaches.Api;
 
-namespace Implementations
+namespace KeyGeneratingCaches.Implementations
 {
     /// <summary>
     /// An implementation of IKeyGeneratingCache with full compliance to the API, but no actual underlying caching.

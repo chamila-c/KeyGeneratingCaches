@@ -9,12 +9,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyGeneratingCaches.Api.Verification", "KeyGeneratingCaches.Api.Verification\KeyGeneratingCaches.Api.Verification.csproj", "{C08B444B-6A76-4F9F-846C-59C53B0EE270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyGeneratingCaches.UnitTests", "KeyGeneratingCaches.UnitTests\KeyGeneratingCaches.UnitTests.csproj", "{18626421-8C07-4CD1-B3F2-3C8716CFF13E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18626421-8C07-4CD1-B3F2-3C8716CFF13E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18626421-8C07-4CD1-B3F2-3C8716CFF13E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18626421-8C07-4CD1-B3F2-3C8716CFF13E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18626421-8C07-4CD1-B3F2-3C8716CFF13E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C08B444B-6A76-4F9F-846C-59C53B0EE270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C08B444B-6A76-4F9F-846C-59C53B0EE270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C08B444B-6A76-4F9F-846C-59C53B0EE270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C08B444B-6A76-4F9F-846C-59C53B0EE270}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C7BDEBF8-5C7F-4FD8-959C-48D9AE194D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C7BDEBF8-5C7F-4FD8-959C-48D9AE194D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7BDEBF8-5C7F-4FD8-959C-48D9AE194D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
