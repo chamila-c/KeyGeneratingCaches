@@ -14,4 +14,4 @@ before_install:
  
 script:
   - xbuild KeyGeneratingCaches.sln /property:Configuration=Release
-  - nunit-console ./KeyGeneratingCaches.UnitTests/bin/Release/KeyGeneratingCaches.UnitTests.dll -exclude Excluded
+  - /Library/Frameworks/Mono.framework/Home/bin/nunit-console4 ./KeyGeneratingCaches.UnitTests/bin/Release/KeyGeneratingCaches.UnitTests.dll -exclude Excluded
