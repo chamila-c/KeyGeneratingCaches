@@ -21,17 +21,50 @@ namespace KeyGeneratingCaches.Api.Verification
 
 
 
-        public bool PassesAllApiTests()
+        public bool PassesAllApiTests(string testCaseName)
         {
-            return AValidCacheKeyIsReturnedOnAdd ()
-            && TheCacheMissHandlerIsExecutedForANonExistentKey ()
-            && AValidCacheKeyIsReturnedFromGetForANonExistentKey ()
-            && AValidCacheKeyIsReturnedFromGetForAGenuineKey ()
-            && ANewCacheKeyIsReturnedForACacheMiss ()
-            && RemoveDoesNotThrowAnyExceptions ()
-            && TheExpectedDataIsReturnedFromGetForANonExistentKey ()
-            && NullKeySuppliedToGetDoesNotResultInExceptions ()
-            && EmptyKeySuppliedToGetDoesNotResultInExceptions ();
+            testCaseName = testCaseName ?? "Passes All Api Tests";
+
+            var test1 = AValidCacheKeyIsReturnedOnAdd ();
+            var test2 = TheCacheMissHandlerIsExecutedForANonExistentKey ();
+            var test3 = AValidCacheKeyIsReturnedFromGetForANonExistentKey ();
+            var test4 = AValidCacheKeyIsReturnedFromGetForAGenuineKey ();
+            var test5 = ANewCacheKeyIsReturnedForACacheMiss ();
+            var test6 = RemoveDoesNotThrowAnyExceptions ();
+            var test7 = TheExpectedDataIsReturnedFromGetForANonExistentKey ();
+            var test8 = TheExpectedDataIsReturnedFromGetForAGenuineKey ();
+            var test9 = NullKeySuppliedToGetDoesNotResultInExceptions ();
+            var test10 = EmptyKeySuppliedToGetDoesNotResultInExceptions ();
+
+
+            Console.WriteLine ();
+            Console.WriteLine (String.Format("Running all IKeyGeneratingCache Api Tests for test case '{0}'...", testCaseName));
+
+            Console.WriteLine (FormatForOutput("A valid cache key is returned on `Add`", test1));
+            Console.WriteLine (FormatForOutput("The cache miss handler is executed for a non-existent key", test2));
+            Console.WriteLine (FormatForOutput("A valid cache key is returned from `Get` for a non-existent key", test3));
+            Console.WriteLine (FormatForOutput("A valid cache key is returned from `Get` for a genuine key", test4));
+            Console.WriteLine (FormatForOutput("A new cache key is returned for a cache miss", test5));
+            Console.WriteLine (FormatForOutput("`Remove` does not throw any exceptions", test6));
+            Console.WriteLine (FormatForOutput("The expected data is returned from `Get` for a non-existent key", test7));
+            Console.WriteLine (FormatForOutput("The expected data is returned from `Get` for a genuine key", test8));
+            Console.WriteLine (FormatForOutput("Null key supplied to `Get` does not result in exceptions", test9));
+            Console.WriteLine (FormatForOutput("Empty key supplied to `Get` does not result in exceptions", test10));
+
+            Console.WriteLine ("...test run complete");
+            Console.WriteLine ();
+
+
+            return test1
+                && test2
+                && test3
+                && test4
+                && test5
+                && test6
+                && test7
+                && test8
+                && test9
+                && test10;
         }
 
         public bool AValidCacheKeyIsReturnedOnAdd()
@@ -122,6 +155,18 @@ namespace KeyGeneratingCaches.Api.Verification
             return getResult.Data.Equals(expectedData);
         }
 
+        public bool TheExpectedDataIsReturnedFromGetForAGenuineKey()
+        {
+            var expectedData = new FileStyleUriParser ();
+            Func<FileStyleUriParser> cacheMissHandler = () =>
+            {
+                return expectedData;
+            };
+            var genuineKey = _testSubject.Add (expectedData);
+            var getResult = _testSubject.Get (genuineKey, cacheMissHandler);
+            return getResult.Data.Equals(expectedData);
+        }
+
         public bool NullKeySuppliedToGetDoesNotResultInExceptions()
         {
             string nullKey = null;
@@ -158,6 +203,20 @@ namespace KeyGeneratingCaches.Api.Verification
             {
                 return false;
             }
+        }
+
+
+
+        private string FormatForOutput(string testDescription, bool testPassed)
+        {
+            var resultString = testPassed.ToString ();
+            var indentation = "\t";
+            if (!testPassed)
+            {
+                resultString = testPassed.ToString ().ToUpperInvariant () + "\t!!!!";
+                indentation = "!!!!\t";
+            }
+            return indentation + testDescription + ": " + resultString;
         }
     }
 }
