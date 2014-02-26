@@ -5,6 +5,12 @@ using System.Threading;
 
 namespace KeyGeneratingCaches.Implementations
 {
+    /// <summary>
+    /// An implementation of IKeyGeneratingCache that is thread safe, but does
+    /// not synchronise concurrent cache misses - i.e. if multiple concurrent threads
+    /// request an item that triggers a cache miss, each thread will independently 
+    /// fetch the data from the underlying source. 
+    /// </summary>
     public class NonLockingKeyGeneratingCache : IKeyGeneratingCache
     {
         // Private class for boxing the actual data before
@@ -16,15 +22,25 @@ namespace KeyGeneratingCaches.Implementations
         }
 
 
+        // The underlying cache
         private readonly ObjectCache _objectCache;
 
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NonLockingKeyGeneratingCache"/> class
+        /// that utilises a <see cref="System.Runtime.Caching.MemoryCache"/> as the underlying cache
+        /// </summary>
         public NonLockingKeyGeneratingCache ()
         {
-            _objectCache = new MemoryCache ("KeyGeneratingCaches.Implementations.NonLockingKeyGeneratingCache");
+            _objectCache = new MemoryCache (this.GetType().FullName);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NonLockingKeyGeneratingCache"/> class
+        /// that utilises the supplied <see cref="System.Runtime.Caching.ObjectCache"/> as the underlying cache 
+        /// </summary>
+        /// <param name="objectCache">A <see cref="System.Runtime.Caching.ObjectCache"/> to be used as the underlying cache</param>
         public NonLockingKeyGeneratingCache(ObjectCache objectCache)
         {
             _objectCache = objectCache;

@@ -24,13 +24,19 @@ namespace KeyGeneratingCaches.UnitTests.Implementations
 
         [Test()]
         /// <summary>
-        /// Tests API conformance using the KeyGeneratingCaches.Api.Verification.ApiTester
+        /// Tests API conformance using the <see cref="KeyGeneratingCaches.Api.Verification.ApiTester"/> 
         /// class' 'PassesAllApiTests' method
         /// </summary>
         public void PassesAllApiTest()
         {
             Assert.IsTrue (_apiTester.PassesAllApiTests (this.GetType().FullName +  ".PassesAllApiTests"));
         }
+
+
+
+        // TODO: Thread safety tests
+
+        // TODO: No synchronisation (b/locking) tests
     }
 }
 

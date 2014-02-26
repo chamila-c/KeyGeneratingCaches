@@ -41,6 +41,7 @@
     <Compile Include="Api\IKeyGeneratingCache.cs" />
     <Compile Include="Implementations\DefaultKeyGeneratingCache.cs" />
     <Compile Include="Implementations\NonLockingKeyGeneratingCache.cs" />
+    <Compile Include="Implementations\LockingKeyGeneratingCache.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -10,7 +10,7 @@ namespace KeyGeneratingCaches.Implementations
     public class DefaultKeyGeneratingCache : IKeyGeneratingCache
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Implementations.DefaultKeyGeneratingCache"/> class.
+        /// Initializes a new instance of the <see cref="DefaultKeyGeneratingCache"/> class.
         /// </summary>
         public DefaultKeyGeneratingCache ()
         {

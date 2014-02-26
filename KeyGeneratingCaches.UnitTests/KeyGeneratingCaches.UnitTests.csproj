@@ -36,10 +36,12 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Caching" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\DefaultKeyGeneratingCacheTests.cs" />
     <Compile Include="Implementations\NonLockingKeyGeneratingCacheTests.cs" />
+    <Compile Include="Implementations\LockingKeyGeneratingCacheTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
