@@ -25,6 +25,11 @@ build/
 [Oo]bj
 
 
+# NuGet .nupkg (only)
+# --------------------
+packages/**/*.nupkg
+
+
 # MonoDevelop / Visual Studio
 # ----------------------------
 *.[Oo]bj
