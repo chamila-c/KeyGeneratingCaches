@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System.Diagnostics;
 using System.Runtime.Caching;
 using System.Collections.Specialized;
+using System.Threading;
 
 namespace KeyGeneratingCaches.UnitTests.Implementations
 {
@@ -51,23 +52,25 @@ namespace KeyGeneratingCaches.UnitTests.Implementations
         public void MemoryProfiling()
         {
             var cacheSettings = new NameValueCollection ();
-            cacheSettings.Add ("cacheMemoryLimitMegabytes", "200");
+            cacheSettings.Add ("cacheMemoryLimitMegabytes", "1");
+            cacheSettings.Add ("physicalMemoryLimitPercentage", "1");
             cacheSettings.Add ("pollingInterval", "00:00:02");
             var memoryCache = new MemoryCache("Test.Cache", cacheSettings);
 
-            Console.WriteLine (memoryCache.CacheMemoryLimit);
-            Console.WriteLine (memoryCache.PhysicalMemoryLimit);
-            Console.WriteLine (memoryCache.PollingInterval);
+            Console.WriteLine ("CacheMemoryLimit (bytes): " + memoryCache.CacheMemoryLimit);
+            Console.WriteLine ("PhysicalMemoryLimit (%): " + memoryCache.PhysicalMemoryLimit);
+            Console.WriteLine ("PollingInterval: " + memoryCache.PollingInterval);
 
             var objectUnderTest = new LockingKeyGeneratingCache (memoryCache);
-            Console.WriteLine (Process.GetCurrentProcess ().WorkingSet64);
+            Console.WriteLine ("Working set before filling cache (bytes): " + Process.GetCurrentProcess ().WorkingSet64);
             for (var outerLoop = 0; outerLoop < 20; outerLoop++)
             {
                 for (var innerLoop = 0; innerLoop < 100000; innerLoop++)
                 {
                     objectUnderTest.Add (new FileStyleUriParser());
                 }
-                Console.WriteLine (Process.GetCurrentProcess ().WorkingSet64);
+                Thread.Sleep (5000);
+                Console.WriteLine ("Working set at iteration " + (outerLoop + 1) + " (bytes): " + Process.GetCurrentProcess ().WorkingSet64);
             }
         }
     }
