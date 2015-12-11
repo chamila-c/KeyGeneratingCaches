@@ -1,15 +1,16 @@
 using System;
 using System.Runtime.Caching;
-using KeyGeneratingCaches.Api;
 using System.Threading;
+using KeyGeneratingCaches.Api;
 
 namespace KeyGeneratingCaches.Implementations
 {
     /// <summary>
-    /// An implementation of IKeyGeneratingCache that is thread safe, but does
-    /// not synchronise concurrent cache misses - i.e. if multiple concurrent threads
-    /// request an item that triggers a cache miss, each thread will independently 
-    /// fetch the data from the underlying source. 
+    /// An implementation of IKeyGeneratingCache that optimises for concurrency
+    /// (by avoiding any locking or synchronisation) at the expense of potentially
+    /// higher cache miss rates.
+    /// If multiple concurrent threads request an item that triggers a cache miss,
+    /// each thread will independently fetch the data from the underlying source. 
     /// </summary>
     public class NonLockingKeyGeneratingCache : IKeyGeneratingCache
     {
